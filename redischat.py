@@ -5,14 +5,7 @@ import time
 import json
 
 
-'''
-# 使用 gunicorn 启动
-gunicorn --worker-class=gevent -t 9999 redischat:app
-# 开启 debug 输出
-gunicorn --log-level debug --worker-class=gevent -t 999 redis_chat81:app
-# 把 gunicorn 输出写入到 gunicorn.log 文件中
-gunicorn --log-level debug --access-logfile gunicorn.log --worker-class=gevent -t 999 redis_chat81:app
-'''
+
 
 # 连接上本机的 redis 服务器
 # 所以要先打开 redis 服务器
@@ -80,6 +73,7 @@ def chat_add():
 
 if __name__ == '__main__':
     config = dict(
+	host = '0.0.0.0',
         debug=True,
     )
     app.run(**config)
